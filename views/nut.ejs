@@ -1,0 +1,41 @@
+<%- include('partials/nav'); -%>
+<body>
+    <div class="main">
+    <div class="left">
+        
+     <!-- Default dropend button -->
+     <%- include('partials/left'); -%>
+
+    </div>
+    <div class="right">
+        <form action="/n" method="POST" class="kk">
+        <div class="form-floating mb-3" id="s">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nut">
+            <label for="floatingInput"> Enter Food </label>
+          </div>
+          <input id="g"type="submit" class="form-control l">
+        </form>
+    </div>
+    </div>
+
+    <style>
+        .right{
+          margin-top: 3em;
+       margin-right: 4em;
+       padding: 2em;
+        }
+        #g{
+            color: rgb(135, 206, 28);
+            font-weight: bolder;
+            
+            padding: 1em;
+        }
+        #s{
+            font-weight: bolder;
+        }
+     
+    </style>
+    
+
+</body>
+</html>

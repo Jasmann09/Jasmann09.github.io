@@ -1,0 +1,62 @@
+<%- include('partials/nav'); -%>
+
+  <body>
+      <div class="main">
+      <div class="left">
+          
+       <!-- Default dropend button -->
+       <%- include('partials/left'); -%>
+
+    <div class="right">
+        <div class="card" style="width: 100rem;">
+            <img class="card-img-top" src="../images/pexels-prasanth-inturi-1051838.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Yoga</h5>
+              <a href="/yoga" class="btn btn-primary">Get started</a>
+            </div>
+          </div>
+          <div class="card" style="width: 100rem;">
+            <img class="card-img-top" src="data:image/jpeg;base64,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" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Bicep Curl</h5>
+              <a href="/bicepcurl" class="btn btn-primary">Get started</a>
+            </div>
+          </div><br>
+          <div class="card" style="width: 100em;">
+            <img class="card-img-top" src="../images/how-to-squat-common-mistakes-1200x800-1.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Squats</h5>
+              <a href="/squats" class="btn btn-primary">Get started</a>
+            </div>
+          </div>
+          <div class="card" >
+            <img class="card-img-top" src="../images/1109-jumping-rope-4.webp" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Jump Rope</h5>
+              <a href="/jumprope" class="btn btn-primary">Get started</a>
+            </div>
+          </div>
+    </div>
+  </div>
+
+        </body>
+        <style>
+            .card{
+              width: 1000px;
+              height: 500px;
+                margin: 1em;
+            }
+            
+            .right{display: flex;
+                flex: auto;
+                align-content: flex-start;
+                width: 900px;
+                height: 500px;
+        
+            }
+            .left{
+                display: flex;
+                margin-left: 0em;
+            }
+        </style>
+</html>

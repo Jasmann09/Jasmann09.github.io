@@ -1,0 +1,110 @@
+<%- include('partials/nav'); -%>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div class="main">
+    <div class="left">
+        
+     <!-- Default dropend button -->
+     <%- include('partials/left'); -%>
+
+    </div>
+    <div class="right">
+        <br>
+        <h1 class="center">Profile </h1><hr>
+       
+        <% if(datas.length >0){%>
+            <% datas.forEach(data => {%>
+                <div class="f">
+                     <div class="data">
+                    <h5>Name:-<%= data.name %></h3> <br>     
+                    <h5>Email:-<%= data.email %></h3><br>
+                    <h5>Eating preference:-<%= data.vn %></h3><br>
+                    <h5>Weight:-<%= data.weight %> kg</h3><br>
+                    <h5>Hieght:-<%= data.hieght %>cm</h3><br>
+                    <h5>Gender:-<%= data.gender %></h3>
+                    </div>
+                 
+
+          <% }) %>
+          <% } %>
+          <div class="chart">
+          <canvas id="myChart" width="100" height="100"></canvas>
+          </div>
+    </div>
+    </div>
+ 
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Height', 'weight', 'Bmi','Fat %'],
+        datasets: [{
+            label: 'YOUR DATA',
+            data: [181,74,21,15],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+    </div>
+    <style>
+        .data{
+            padding: 1em;
+        }
+        .chart {
+            display: flex;
+            height: 20%;
+            width: 40%;
+        }
+        .f{
+            display: flex;
+        }
+        .data{
+            width: 400px;
+            margin-right: 3em;
+            padding: 2em;
+        }
+        footer{
+      
+      background-color: #006666;
+      color: burlywood;
+
+    }
+    </style>
+     <footer>
+        <div class="container">
+            <footer class="py-3 my-4">
+              <p class="text-center text-muted" id="n"><I>Health 4 All</I></p>
+              <p class="text-center text-muted" id="k">&copy; 2022 Company, Inc</p>
+            </footer>
+          </div>
+      </footer>
+    </body>
+    </html>
+    
+

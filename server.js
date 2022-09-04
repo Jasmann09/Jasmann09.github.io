@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const Diet= require('./diet');
@@ -8,13 +9,9 @@ const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const jwt = require('jsonwebtoken');
 const User=require('./models/User')
 const fetch=require("node-fetch");
-const params={
-    api_key:'4DJ2dhn8pujJC3k1IBkdeNhvzvMFNnEEtOcRKKi',
-    query:'apple',
-    dataType:["Branded"],
-    pageSize:1,
-}
-const api_url=`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${encodeURIcomponent(params.api_key)}&query=${encodeURIComponent(params.query)}&dataType=${encodeURIcomponent(params.dataType)}&pageSize=${encodeURIComponent(params.pageSize)}`
+
+
+
 
 
 
@@ -35,7 +32,7 @@ mongoose.connect(dburi)
 
 const cookieParser = require('cookie-parser');
 const { json } = require('body-parser');
-const { response } = require('express');
+const { response, query } = require('express');
 app.use(cookieParser());
 app.get('*', checkUser);
 app.use(authRoutes);
@@ -74,6 +71,8 @@ app.post('/add',(req,res)=>{
 })
 
 app.get('/add-blo', requireAuth, (req, res) => res.render('form'));
+
+
 app.get('/home',async(req,res)=>{
     const dd =res.locals.user
     console.log(dd.email);
@@ -90,10 +89,62 @@ app.get('/home',async(req,res)=>{
     
 
 })
+
 app.get('/a', requireAuth, (req, res) => 
-fetch(api_url).then(response => response.json())
-.then(data => console.log(data.foods[0].foodNutrients))
+fetch(ur, option)
+	.then(res => res.json())
+	.then(json => console.log(json))
+	.catch(err => console.error('error:' + err))
 );
+app.get('/menu', requireAuth, (req, res) => res.render('menu'));
+
+app.get('/yoga', requireAuth, (req, res) => res.render('yoga'));
+
+
+app.get('/bicepcurl', requireAuth, (req, res) => res.render('bicepcurl'));
+
+
+app.get('/jumprope', requireAuth, (req, res) => res.render('jumprope'));
+
+app.get('/squats', requireAuth, (req, res) => res.render('squats'));
+
+
+
+app.get('/nut', requireAuth, (req, res) =>
+res.render('nut'));
+
+
+
+
+app.post('/n', requireAuth, (req, res) => {
+
+const data=req.body;
+console.log(data);
+console.log(data.nut);
+const params={
+    query:data.nut,
+}
+const ur = `https://calorieninjas.p.rapidapi.com/v1/nutrition?query=${encodeURIComponent(params.query)}`
+
+const option = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '898dc87ffemsh431b3972083de6fp198dcfjsn9f46bab8a15a',
+    'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
+  }
+};
+console.log(params);
+
+fetch(ur, option)
+   .then(res => res.json())
+   .then(json => {
     
+    res.render('nn',{nn: json.items})})
+   .catch(err => console.error('error:' + err))
+ 
+
+});
+    
+
 
 
